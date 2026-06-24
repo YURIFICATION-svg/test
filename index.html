@@ -2,8 +2,22 @@
 <html>
   <head>
     <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <p>성공.</p>
+    <div>
+      <button onclick="addComment()">SEND</button>
+    </div>
+    <input id="sendmessage">
+
+    <div>
+      <button onclick="getComment()">GET</button>
+    </div>
+    <input id="getmessage">
+    
+    <div id="chat">
+    </div>
+    
+    <script src="script.js"></script>
   </body>
 </html>
