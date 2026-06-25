@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello, World!</title>
+    <title>TeaPartyRoom</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div>
-      <button onclick="addComment()">SEND</button>
-    </div>
-    <input id="sendmessage">
+    <div>아이디</div>
+    <input id="id">
 
-    <div>
-      <button onclick="getComment()">GET</button>
-    </div>
-    <input id="getmessage">
-    
-    <div id="chat">
-    </div>
+    <div>비밀번호</div>
+    <input id="password">
+
+    <button type="submit" onclick="doRegister()">확인</button>
+
+    <div id='error' class='error'></div>
     
     <script src="script.js"></script>
   </body>
