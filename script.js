@@ -1,5 +1,5 @@
 const $  = id => document.getElementById(id);
-const API_BASE = "http://localhost:8000";
+const API_BASE = "https://test-production-3a75.up.railway.app";
 
 let authToken    = localStorage.getItem('token')    || null;
 let authUsername = localStorage.getItem('username') || null;
