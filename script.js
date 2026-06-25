@@ -33,3 +33,4 @@ async function doRegister() {
   } catch(e) {
     $('error').textContent = '서버 연결 실패 — 서버가 실행 중인지 확인하세요';
   }
+}
