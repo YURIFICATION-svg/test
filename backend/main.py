@@ -31,7 +31,7 @@ app = FastAPI(title="TeaPartyRoom", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://yurification-svg.github.io"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
