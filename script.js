@@ -27,6 +27,11 @@ async function doLogin() {
       return; 
     }
 
+    authToken    = data.token;
+    authUsername = data.username;
+    localStorage.setItem('token',    authToken);
+    localStorage.setItem('username', authUsername);
+
     startGame();
   } catch(e) {
     $('error').textContent = '서버 연결 실패 — 서버가 실행 중인지 확인하세요';
