@@ -1,5 +1,3 @@
-/*new file*/
-
 const $  = id => document.getElementById(id);
 const API_BASE = "https://test-production-3a75.up.railway.app";
 
@@ -8,6 +6,31 @@ let authUsername = localStorage.getItem('username') || null;
 
 function startGame() {
   alert("성공!");
+}
+
+async function doLogin() {
+  const user = $('id').value.trim();
+  const pass = $('password').value;
+  $('error').textContent = '';
+
+  try {
+    const res  = await fetch(`${API_BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: user, password: pass })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) { 
+      $('error').textContent = data.detail; 
+      return; 
+    }
+
+    startGame();
+  } catch(e) {
+    $('error').textContent = '서버 연결 실패 — 서버가 실행 중인지 확인하세요';
+  }
 }
 
 async function doRegister() {
@@ -25,12 +48,17 @@ async function doRegister() {
     });
 
     const data = await res.json();
-    if (!res.ok) { $('error').textContent = data.detail || '회원가입 실패'; return; }
+
+    if (!res.ok) { 
+      $('error').textContent = data.detail;
+      return; 
+    }
 
     authToken    = data.token;
     authUsername = data.username;
     localStorage.setItem('token',    authToken);
     localStorage.setItem('username', authUsername);
+    
     startGame();
   } catch(e) {
     $('error').textContent = '서버 연결 실패 — 서버가 실행 중인지 확인하세요';
