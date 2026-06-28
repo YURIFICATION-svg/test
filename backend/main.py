@@ -52,7 +52,7 @@ def get_db():
 @app.post("/auth/login", summary="로그인")
 def login(req: RegisterReq, db: Session = Depends(get_db)):
   user = db.query(User).filter(User.username == req.username).first()
-  if not user or not verify_pw(user.password, user.password_hash):
+  if not user or not verify_pw(req.password, user.password_hash):
     raise HTTPException(status_code=400, detail="아이디 또는 비밀번호가 틀렸습니다")
   
   token = create_token(user.id)
