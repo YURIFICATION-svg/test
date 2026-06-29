@@ -2,19 +2,27 @@
 <html>
   <head>
     <title>TeaPartyRoom</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div>아이디</div>
-    <input id="id" type="text">
+    <!-- 회원가입 폼 -->
+    <div id="login">
+      <div>아이디</div>
+      <input id="id" type="text">
 
-    <div>비밀번호</div>
-    <input id="password" type="password">
+      <div>비밀번호</div>
+      <input id="password" type="password">
 
-    <button type="submit" onclick="doLogin()">로그인</button>
-    <button type="submit" onclick="doRegister()">회원가입</button>
+      <button type="submit" onclick="doLogin()">로그인</button>
+      <button type="submit" onclick="doRegister()">회원가입</button>
 
-    <div id='error' class='error'></div>
+      <div id='error' class='error'></div>
+    </div>
+
+    <!-- 메인 화면 -->
+    <div id="mainscreen" style="display:none;" onclick="dologout()">
+      <button type="submit">로그아웃</button>
+    </div>
     
     <script src="script.js"></script>
   </body>
