@@ -25,5 +25,3 @@ def on_startup():
 
 app.include_router(user_routers)
 app.include_router(message_routers)
-
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
