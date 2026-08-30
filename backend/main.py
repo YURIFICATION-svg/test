@@ -11,6 +11,12 @@ from message.interface.controllers.message_controller import router as message_r
 app = FastAPI()
 app.container = Container()
 
+container.wire(
+    modules=[
+        user_controller
+    ]
+)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://yurification-svg.github.io"],
