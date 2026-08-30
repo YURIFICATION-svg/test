@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 
 from containers import Container
 from database import init_db
+from user.interface.controllers import user_controller
 from user.interface.controllers.user_controller import router as user_routers
 from message.interface.controllers.message_controller import router as message_routers
 
