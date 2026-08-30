@@ -11,7 +11,7 @@ from message.interface.controllers.message_controller import router as message_r
 app = FastAPI()
 app.container = Container()
 
-container.wire(
+app.container.wire(
     modules=[
         user_controller
     ]
