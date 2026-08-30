@@ -21,8 +21,8 @@ app.add_middleware(
 
 app.container.wire(
     modules=[
-        user.interface.controllers,user_controller,
-        message.interface.controllers,message_controller,
+        user.interface.controllers.user_controller,
+        message.interface.controllers.message_controller,
     ]
 )
 
