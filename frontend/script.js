@@ -4,7 +4,7 @@ const $ = id => document.getElementById(id);
 let authToken = localStorage.getItem("token") || null;
 let authUsername = localStorage.getItem("username") || null;
 
-const API_BASE = "";
+const API_BASE = "https://test-v0kg.onrender.com";
 
 function change(module) {
   if (module === "received_email") {
