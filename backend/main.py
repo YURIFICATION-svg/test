@@ -19,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-Container.wire(
+app.container.wire(
     modules=[
         user.interface.controllers,user_controller,
         message.interface.controllers,message_controller,
