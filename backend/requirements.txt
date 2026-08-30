@@ -8,3 +8,4 @@ python-jose[cryptography]
 redis
 python-multipart
 ulid-py
+psycopg2-binary
