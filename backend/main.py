@@ -13,7 +13,7 @@ app.container = Container()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://yurification-svg.github.io"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
