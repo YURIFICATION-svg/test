@@ -19,13 +19,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.container.wire(
-    modules=[
-        interface/controllers.user_controller,
-        interface/controllers.message_controller
-    ]
-)
-
 @app.on_event("startup")
 def on_startup():
     init_db()
