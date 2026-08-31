@@ -16,7 +16,7 @@
 
       <button onclick="doLogin()">로그인</button>
       <button onclick="change('createuser')">회원가입하기</button>
-      <div id="error"></div>
+      <div id="loginerror"></div>
     </div>
 
     <div id="createuser" style="display: none">
@@ -27,6 +27,7 @@
       <input type="password" id="create_password" />
 
       <button onclick="doCreateUser()">회원가입</button>
+      <div id="createerror"></div>
     </div>
 
     <div id="write" style="display: none">
@@ -44,6 +45,7 @@
 
       <textarea id="write_content" rows="8" cols="40"></textarea>
       <button onclick="doWrite()">보내기</button>
+      <div id="writeerror"></div>
     </div>
 
     <div id="received_email" style="display: none">
@@ -52,6 +54,7 @@
       <button onclick="change('received_email')">받은 편지함</button>
       <button onclick="change('changeinfo')">내 정보 변경</button>
       <button onclick="doLogout()">로그아웃</button>
+      <div id="receivederror"></div>
     </div>
 
     <div id="sent_email" style="display: none">
@@ -60,6 +63,7 @@
       <button onclick="change('received_email')">받은 편지함</button>
       <button onclick="change('changeinfo')">내 정보 변경</button>
       <button onclick="doLogout()">로그아웃</button>
+      <div id="senterror"></div>
     </div>
 
     <div id="read_r" style="display: none">
@@ -80,6 +84,7 @@
       <button onclick="change('write')">돌아가기</button>
       <button onclick="doUpdateUser()">수정</button>
       <button onclick="change('deleteuser')">회원 탈퇴</button>
+      <div id="updateerror"></div>
     </div>
 
     <div id="deleteuser" style="display: none">
@@ -89,6 +94,7 @@
 
       <button onclick="change('changeinfo')">취소</button>
       <button onclick="doDeleteUser()">탈퇴</button>
+      <div id="deleteerror"></div>
     </div>
 
     <script src="script.js"></script>
