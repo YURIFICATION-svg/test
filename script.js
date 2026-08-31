@@ -24,7 +24,6 @@ function change(module) {
 async function doLogin() {
   const user = $("username").value.trim();
   const pass = $("password").value;
-  alert(user);
 
   const formData = new URLSearchParams();
   formData.append("username", user);
@@ -89,6 +88,7 @@ async function doLogout() {
 async function doCreateUser() {
   const user = $("create_username").value.trim();
   const pass = $("create_password").value;
+  alert(user);
 
   if (user.length < 1) {
     $("error").textContent = "닉네임을 입력하세요";
