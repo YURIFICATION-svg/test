@@ -88,6 +88,7 @@ async function doLogout() {
 async function doCreateUser() {
   const user = $("create_username").value.trim();
   const pass = $("create_password").value;
+  alert(user);
 
   if (user.length < 1) {
     $("error").textContent = "닉네임을 입력하세요";
