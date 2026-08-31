@@ -24,6 +24,7 @@ function change(module) {
 async function doLogin() {
   const user = $("username").value.trim();
   const pass = $("password").value;
+  alert(user);
 
   const formData = new URLSearchParams();
   formData.append("username", user);
