@@ -86,6 +86,7 @@ async function doLogout() {
 
 
 async function doCreateUser() {
+  alert(1);
   const user = $("create_username").value.trim();
   const pass = $("create_password").value;
 
