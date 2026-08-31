@@ -25,9 +25,9 @@ class UserService:
         if _user:
             raise HTTPException(status_code=422)
             
-        print("password:", password)
-        print("password length:", len(password))
-        print("password bytes:", len(password.encode("utf-8")))
+        print("password:", password, flush=True)
+        print("password length:", len(password), flush=True)
+        print("password bytes:", len(password.encode("utf-8")), flush=True)
 
         user = User(
             id=self._generate_id(),
