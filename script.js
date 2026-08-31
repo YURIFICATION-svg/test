@@ -41,7 +41,7 @@ async function doLogin() {
     const data = await res.json();
 
     if (!res.ok) {
-      $("error").textContent = data.detail || "로그인에 실패했습니다.";
+      $("loginerror").textContent = data.detail || "로그인에 실패했습니다.";
       return;
     }
 
@@ -53,7 +53,7 @@ async function doLogin() {
 
     change("write");
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("loginerror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
@@ -69,7 +69,7 @@ async function doLogout() {
 
     if (!res.ok) {
       const data = await res.json();
-      $("error").textContent = data.detail || "로그아웃에 실패했습니다.";
+      $("logouterror").textContent = data.detail || "로그아웃에 실패했습니다.";
       return;
     }
 
@@ -80,24 +80,22 @@ async function doLogout() {
     authUsername = null;
     change("login");
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("logouterror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
 
 async function doCreateUser() {
-  alert(2);
   const user = $("create_username").value.trim();
   const pass = $("create_password").value;
-  alert(user.length);
 
   if (user.length < 1) {
-    $("error").textContent = "닉네임을 입력하세요";
+    $("createerror").textContent = "닉네임을 입력하세요";
     return;
   }
 
   if (pass.length < 8 || pass.length > 16) {
-    $("error").textContent = "비밀번호는 8~16자여야 합니다";
+    $("createerror").textContent = "비밀번호는 8~16자여야 합니다";
     return;
   }
 
@@ -116,13 +114,13 @@ async function doCreateUser() {
     const data = await res.json();
 
     if (!res.ok) {
-      $("error").textContent = data.detail || "회원가입에 실패했습니다.";
+      $("createerror").textContent = data.detail || "회원가입에 실패했습니다.";
       return;
     }
 
     change("login");
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("createerror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
@@ -143,7 +141,7 @@ async function doDeleteUser() {
 
     if (!res.ok) {
       const data = await res.json();
-      $("error").textContent = data.detail || "회원 탈퇴에 실패했습니다.";
+      $("deleteerror").textContent = data.detail || "회원 탈퇴에 실패했습니다.";
       return;
     }
 
@@ -154,7 +152,7 @@ async function doDeleteUser() {
     authUsername = null;
     change("login");
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("deleteerror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
@@ -184,7 +182,7 @@ async function doUpdateUser() {
     const data = await res.json();
 
     if (!res.ok) {
-      $("error").textContent = data.detail || "회원 정보 수정에 실패했습니다.";
+      $("updateerror").textContent = data.detail || "회원 정보 수정에 실패했습니다.";
       return;
     }
 
@@ -195,7 +193,7 @@ async function doUpdateUser() {
 
     change("write");
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("updateerror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
@@ -206,12 +204,12 @@ async function doWrite() {
   const content = $("write_content").value;
 
   if (!receiver) {
-    $("error").textContent = "받는 사람을 입력하세요";
+    $("writeerror").textContent = "받는 사람을 입력하세요";
     return;
   }
 
   if (!title.trim()) {
-    $("error").textContent = "제목을 입력하세요";
+    $("writeerror").textContent = "제목을 입력하세요";
     return;
   }
 
@@ -232,7 +230,7 @@ async function doWrite() {
     const data = await res.json();
 
     if (!res.ok) {
-      $("error").textContent = data.detail || "편지 전송에 실패했습니다.";
+      $("writeerror").textContent = data.detail || "편지 전송에 실패했습니다.";
       return;
     }
 
@@ -240,7 +238,7 @@ async function doWrite() {
     $("write_title").value = "";
     $("write_content").value = "";
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    $("writeerror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
   }
 }
 
@@ -264,7 +262,8 @@ async function readMessage(messageId, screenId, listItemId) {
     const data = await res.json();
 
     if (!res.ok) {
-      $("error").textContent = data.detail || "편지를 불러오지 못했습니다.";
+      if (screenId == "read_s") { $("senterror").textContent = data.detail || "편지를 불러오지 못했습니다."; }
+      if (screenId == "read_r") { $("receivederror").textContent = data.detail || "편지를 불러오지 못했습니다."; }
       return;
     }
 
@@ -284,7 +283,8 @@ async function readMessage(messageId, screenId, listItemId) {
 
     $(screenId).appendChild(email);
   } catch (error) {
-    $("error").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요";
+    if (screenId == "read_s") { $("senterror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요"; }
+    if (screenId == "read_r") { $("receivederror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요"; }
   }
 }
 
