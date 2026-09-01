@@ -14,7 +14,7 @@ class MService:
 
     def send_message(
         self,
-        sender_id: str,
+        sender_name: str,
         receiver_name: str,
         title: str,
         content: str,
@@ -23,8 +23,8 @@ class MService:
 
         message = Message(
             id=self._generate_id(),
-            sender_id=sender_id,
-            receiver_id=receiver.id,
+            sender_id=sender_name,
+            receiver_id=receiver_name,
             title=title,
             content=content,
         )
