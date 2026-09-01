@@ -5,13 +5,15 @@ from typing import Annotated
 from fastapi.security import OAuth2PasswordBearer
 from dataclasses import dataclass
 import uuid
+import os
 import redis
 
-SECRET_KEY = "MIKACICADA"
 ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+REDIS_URL = os.getenv("REDIS_URL")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/login")
-redis_client = redis.Redis(host="localhost", port=6379, db=0, decode_responses=True)
+redis_client = redis.from_url(REDIS_URL, decode_responses=True)
 
 def create_access_token(
     payload: dict,
