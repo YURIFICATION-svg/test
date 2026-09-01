@@ -267,27 +267,13 @@ async function readMessage(messageId, screenId, listItemId) {
       return;
     }
 
-    const email = document.createElement("div");
-    email.id = data.id;
-
-    for (const value of [
-      data.sender_id,
-      data.receiver_id,
-      data.title,
-      data.content,
-    ]) {
-      const field = document.createElement("div");
-      field.textContent = value;
-      email.appendChild(field);
-    }
-
-    $(screenId).appendChild(email);
+    //dsadfdddddddddddddddddddddddddddddddd
+    
   } catch (error) {
     if (screenId == "read_s") { $("senterror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요"; }
     if (screenId == "read_r") { $("receivederror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요"; }
   }
 }
-
 
 function Read_S(messageId) {
   return readMessage(messageId, "read_s", messageId);
