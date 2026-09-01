@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from typing import Annotated
 from fastapi.security import OAuth2PasswordBearer
 from dataclasses import dataclass
-from ulid import ULID
+import uuid
 import redis
 
 SECRET_KEY = "MIKACICADA"
@@ -18,7 +18,7 @@ def create_access_token(
     expires_delta: timedelta = timedelta(hours=6)
 ):
     expire = datetime.utcnow() + expires_delta
-    payload.update({"exp": expire, "jti": str(ULID())})
+    payload.update({"exp": expire, "jti": str(uuid.uuid4())})
     encoded_jwt = jwt.encode(payload, SECRET_KEY, algorithm = ALGORITHM)
 
     return encoded_jwt
