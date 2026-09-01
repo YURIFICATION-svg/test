@@ -267,7 +267,16 @@ async function readMessage(messageId, screenId, listItemId) {
       return;
     }
 
-    //dsadfdddddddddddddddddddddddddddddddd
+    if (screenId == "read_s") {
+      $("receivername").textContent = data.receiver_id;
+      $("stitle").textContent = data.title;
+      $("s_content").textContent = data.content;
+    }
+    if (screenId == "read_r") {
+      $("sendername").textContent = data.sender_id;
+      $("rtitle").textContent = data.title;
+      $("r_content").textContent = data.content;
+    }
     
   } catch (error) {
     if (screenId == "read_s") { $("senterror").textContent = "서버 연결 실패 — 서버가 실행 중인지 확인하세요"; }
