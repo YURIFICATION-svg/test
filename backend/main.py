@@ -14,7 +14,8 @@ app.container = Container()
 
 app.container.wire(
     modules=[
-        user_controller
+        user_controller,
+        message_controller
     ]
 )
 
