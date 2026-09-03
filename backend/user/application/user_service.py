@@ -71,7 +71,7 @@ class UserService:
         logout_user(token)
 
     def find_by_id(self, id: str):
-        return self.find_by_id(id)
+        return self.user_repo.find_by_id(id)
 
     @staticmethod
     def _generate_id() -> str:
