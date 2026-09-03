@@ -61,16 +61,6 @@ class UserRepositary(IUserRepositary): #구현체
         
         return user
 
-    def get_users(self):
-        with SessionLocal() as db:
-            users = db.query(User).all()
-
-        return [UserV0(
-            id = user.id,
-            name = user.name,
-            password = user.password
-        ) for user in users]
-
     def delete(self, id: str):
         with SessionLocal() as db:
             user = db.query(User).filter(User.id == id).first()
