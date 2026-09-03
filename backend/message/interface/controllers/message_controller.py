@@ -23,8 +23,8 @@ class MessageResponse(BaseModel):
     sender_id: str
     receiver_id: str
     title: str
-    content: str,
-    sender_name: str,
+    content: str
+    sender_name: str
     receiver_name: str
 
 
