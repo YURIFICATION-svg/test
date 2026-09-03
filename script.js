@@ -263,12 +263,12 @@ async function readMessage(messageId, screenId, listItemId) {
     }
 
     if (screenId == "read_s") {
-      $("receivername").textContent = data.receiver_id;
+      $("receivername").textContent = data.receiver_name;
       $("stitle").textContent = data.title;
       $("s_content").textContent = data.content;
     }
     if (screenId == "read_r") {
-      $("sendername").textContent = data.sender_id;
+      $("sendername").textContent = data.sender_name;
       $("rtitle").textContent = data.title;
       $("r_content").textContent = data.content;
     }
