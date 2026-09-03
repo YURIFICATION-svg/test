@@ -4,7 +4,6 @@ from typing import Annotated
 from dependency_injector.wiring import inject, Provide
 
 from message.application.message_service import MService
-from user.application.user_service import UserService
 from containers import Container
 from common.auth import get_current_user
 
@@ -78,7 +77,6 @@ def find_by_id(
     message_id: str,
     user_id: Annotated[str, Depends(get_current_user)],
     message_service: MService = Depends(Provide[Container.message_service])
-    user_service: UserService = Depends(Provide[Container.user_service])
 ):
     message = message_service.find_by_id(message_id)
 
@@ -87,4 +85,4 @@ def find_by_id(
 
         raise HTTPException(status_code=403, detail="접근 권한이 없습니다.")
 
-    return to_response(message), user_service.find_by_id(message.sender_id), user_service.find_by_id(message.receiver_id)
+    return to_response(message)
