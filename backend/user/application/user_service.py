@@ -52,7 +52,7 @@ class UserService:
         return user
 
     def get_users(self):
-        return self.user_repo.get_users()
+        return self.user_repo.get_user()
 
     def delete_user(self, id: str):
         self.user_repo.delete(id)
