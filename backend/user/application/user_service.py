@@ -51,8 +51,8 @@ class UserService:
 
         return user
 
-    def get_user(self, id: str):
-        return self.user_repo.find_by_id(id)
+    def get_users(self):
+        return self.user_repo.get_users()
 
     def delete_user(self, id: str):
         self.user_repo.delete(id)
