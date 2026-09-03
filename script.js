@@ -264,13 +264,13 @@ async function readMessage(messageId, screenId, listItemId) {
 
     if (screenId == "read_s") {
       $("receivername").textContent = data.receiver_name;
-      $("stitle").textContent = data.title;
-      $("s_content").textContent = data.content;
+      $("stitle").textContent = data.message.title;
+      $("s_content").textContent = data.message.content;
     }
     if (screenId == "read_r") {
       $("sendername").textContent = data.sender_name;
-      $("rtitle").textContent = data.title;
-      $("r_content").textContent = data.content;
+      $("rtitle").textContent = data.message.title;
+      $("r_content").textContent = data.message.content;
     }
     
   } catch (error) {
