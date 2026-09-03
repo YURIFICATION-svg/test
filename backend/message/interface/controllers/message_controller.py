@@ -72,7 +72,7 @@ def read_sended_message(
     return {"messages": [to_response(message) for message in messages]}
 
 
-@router.get("/{message_id}", response_model=MessageResponse)
+@router.get("/{message_id}")
 @inject
 def find_by_id(
     message_id: str,
