@@ -70,6 +70,9 @@ class UserService:
     def logout(self, token: str):
         logout_user(token)
 
+    def find_by_id(self, id: str):
+        return self.find_by_id(id)
+
     @staticmethod
     def _generate_id() -> str:
         import ulid
