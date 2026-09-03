@@ -264,13 +264,13 @@ async function readMessage(messageId, screenId, listItemId) {
 
     if (screenId == "read_s") {
       $("receivername").textContent = data.receiver_name;
-      $("stitle").textContent = data.message.title;
-      $("s_content").textContent = data.message.content;
+      $("stitle").textContent = data.title;
+      $("s_content").textContent = data.content;
     }
     if (screenId == "read_r") {
       $("sendername").textContent = data.sender_name;
-      $("rtitle").textContent = data.message.title;
-      $("r_content").textContent = data.message.content;
+      $("rtitle").textContent = data.title;
+      $("r_content").textContent = data.content;
     }
     
   } catch (error) {
@@ -310,7 +310,7 @@ async function doReadSentEmail() {
       const email = document.createElement("div");
       email.id = message.id;
       email.className = "_sent_email";
-      email.textContent = `${message.title} - ${message.receiver_id}`;
+      email.textContent = `${message.title} - ${message.receiver_name}`;
       email.addEventListener("click", () => Read_S(message.id));
       $("sent_email").appendChild(email);
     }
@@ -341,7 +341,7 @@ async function doReadReceivedEmail() {
       const email = document.createElement("div");
       email.id = message.id;
       email.className = "_received_email";
-      email.textContent = `${message.title} - ${message.sender_id}`;
+      email.textContent = `${message.title} - ${message.sender_name}`;
       email.addEventListener("click", () => Read_R(message.id));
       $("received_email").appendChild(email);
     }
