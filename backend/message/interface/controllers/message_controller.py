@@ -89,7 +89,7 @@ def find_by_id(
 
     return {
         to_response(message),
-        "receiver_name": user_service.find_by_id(message.receiver_id),
-        "sender_name": user_service.find_by_id(message.sender_id)
+        "receiver_name": user_service.find_by_id(message.receiver_id).name,
+        "sender_name": user_service.find_by_id(message.sender_id).name
     }
         
