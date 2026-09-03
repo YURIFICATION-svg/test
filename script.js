@@ -246,11 +246,6 @@ async function doWrite() {
 async function readMessage(messageId, screenId, listItemId) {
   change(screenId);
 
-  const listItem = document.getElementById(listItemId);
-  if (listItem) {
-    listItem.remove();
-  }
-
   try {
     const res = await fetch(`${API_BASE}/messages/${messageId}`, {
       method: "GET",
