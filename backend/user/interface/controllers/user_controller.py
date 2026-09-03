@@ -37,14 +37,9 @@ def update_user(user_id: Annotated[str, Depends(get_current_user)], user: Update
 
 @router.get("")
 @inject
-def get_users(user_service: UserService = Depends(Provide[Container.user_service])):
-    users = user_service.get_users()
-    return {
-        "users": [UserResponse(
-            id = user.id,
-            name = user.name,
-        ) for user in users]
-    }
+def get_user(user_service: UserService = Depends(Provide[Container.user_service])):
+    users = user_service.get_user()
+    return user
 
 @router.delete("", status_code = 204)
 @inject
