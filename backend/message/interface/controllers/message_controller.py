@@ -88,7 +88,7 @@ def find_by_id(
         raise HTTPException(status_code=403, detail="접근 권한이 없습니다.")
 
     return {
-        **to_response(message),
+        "message": to_response(message),
         "receiver_name": user_service.find_by_id(message.receiver_id).name,
         "sender_name": user_service.find_by_id(message.sender_id).name
     }
