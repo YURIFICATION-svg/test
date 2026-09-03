@@ -23,16 +23,20 @@ class MessageResponse(BaseModel):
     sender_id: str
     receiver_id: str
     title: str
-    content: str
+    content: str,
+    sender_name: str,
+    receiver_name: str
 
 
-def to_response(message) -> MessageResponse:
+def to_response(message, user_service: UserService = Depends(Provide[Container.user_service])) -> MessageResponse:
     return MessageResponse(
         id=message.id,
         sender_id=message.sender_id,
         receiver_id=message.receiver_id,
         title=message.title,
         content=message.content,
+        sender_name=user_service.find_by_id(message.sender_id).name,
+        receiver_name=user_service.find_by_id(message.receiver_id).name
     )
 
 
@@ -77,8 +81,7 @@ def read_sended_message(
 def find_by_id(
     message_id: str,
     user_id: Annotated[str, Depends(get_current_user)],
-    message_service: MService = Depends(Provide[Container.message_service]),
-    user_service: UserService = Depends(Provide[Container.user_service])
+    message_service: MService = Depends(Provide[Container.message_service])
 ):
     message = message_service.find_by_id(message_id)
 
@@ -87,9 +90,5 @@ def find_by_id(
 
         raise HTTPException(status_code=403, detail="접근 권한이 없습니다.")
 
-    return {
-        "message": to_response(message),
-        "receiver_name": user_service.find_by_id(message.receiver_id).name,
-        "sender_name": user_service.find_by_id(message.sender_id).name
-    }
+    return to_response(message)
         
